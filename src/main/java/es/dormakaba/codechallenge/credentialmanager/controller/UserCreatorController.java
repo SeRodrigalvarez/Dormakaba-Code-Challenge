@@ -10,8 +10,8 @@ import es.dormakaba.codechallenge.credentialmanager.application.UserCreator;
 import es.dormakaba.codechallenge.credentialmanager.controller.request.UserCreatorRequest;
 import es.dormakaba.codechallenge.credentialmanager.controller.response.UserCreatorResponse;
 import es.dormakaba.codechallenge.credentialmanager.domain.User;
-import es.dormakaba.codechallenge.credentialmanager.domain.UserAlreadyExistsException;
-import es.dormakaba.codechallenge.credentialmanager.domain.ValidationException;
+import es.dormakaba.codechallenge.credentialmanager.domain.exception.UserAlreadyExistsException;
+import es.dormakaba.codechallenge.credentialmanager.domain.exception.ValidationException;
 
 @RestController
 public class UserCreatorController {

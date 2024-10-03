@@ -4,6 +4,7 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.UUID;
 
+import es.dormakaba.codechallenge.credentialmanager.domain.exception.ValidationException;
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.Validation;
 import jakarta.validation.Validator;

@@ -1,4 +1,4 @@
-package es.dormakaba.codechallenge.credentialmanager.domain;
+package es.dormakaba.codechallenge.credentialmanager.domain.exception;
 
 public class UserAlreadyExistsException extends Exception {
 

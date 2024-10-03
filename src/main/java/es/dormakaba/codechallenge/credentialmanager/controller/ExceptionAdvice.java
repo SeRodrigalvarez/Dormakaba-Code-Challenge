@@ -5,11 +5,12 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-import es.dormakaba.codechallenge.credentialmanager.domain.UserAlreadyExistsException;
-import es.dormakaba.codechallenge.credentialmanager.domain.ValidationException;
+import es.dormakaba.codechallenge.credentialmanager.domain.exception.UserAlreadyExistsException;
+import es.dormakaba.codechallenge.credentialmanager.domain.exception.ValidationException;
 
 @RestControllerAdvice
-public class UserExceptionAdvice {
+public class ExceptionAdvice {
+
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(ValidationException.class)
     public String validationExceptionHandler(ValidationException e) {
@@ -25,7 +26,6 @@ public class UserExceptionAdvice {
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     @ExceptionHandler(Exception.class)
     public String defaultExceptionHandler(Exception e) {
-        // TODO: log server-side error
         return "An unexpected error occurred on the server. Please try again later. If the problem persists, contact support.";
     }
 }

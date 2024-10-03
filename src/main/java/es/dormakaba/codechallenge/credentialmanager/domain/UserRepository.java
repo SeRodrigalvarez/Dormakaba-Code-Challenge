@@ -4,6 +4,8 @@ import java.util.UUID;
 
 import org.springframework.stereotype.Repository;
 
+import es.dormakaba.codechallenge.credentialmanager.domain.exception.UserAlreadyExistsException;
+
 @Repository
 public interface UserRepository {
 

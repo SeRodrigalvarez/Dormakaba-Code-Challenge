@@ -7,8 +7,8 @@ import java.util.UUID;
 import org.springframework.stereotype.Component;
 
 import es.dormakaba.codechallenge.credentialmanager.domain.User;
-import es.dormakaba.codechallenge.credentialmanager.domain.UserAlreadyExistsException;
 import es.dormakaba.codechallenge.credentialmanager.domain.UserRepository;
+import es.dormakaba.codechallenge.credentialmanager.domain.exception.UserAlreadyExistsException;
 
 @Component
 public class InMemoryUserRepository implements UserRepository{

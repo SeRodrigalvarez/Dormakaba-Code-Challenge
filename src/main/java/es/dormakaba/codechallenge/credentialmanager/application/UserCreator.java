@@ -4,9 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import es.dormakaba.codechallenge.credentialmanager.domain.User;
-import es.dormakaba.codechallenge.credentialmanager.domain.UserAlreadyExistsException;
 import es.dormakaba.codechallenge.credentialmanager.domain.UserRepository;
-import es.dormakaba.codechallenge.credentialmanager.domain.ValidationException;
+import es.dormakaba.codechallenge.credentialmanager.domain.exception.UserAlreadyExistsException;
+import es.dormakaba.codechallenge.credentialmanager.domain.exception.ValidationException;
 
 @Service
 public class UserCreator {
