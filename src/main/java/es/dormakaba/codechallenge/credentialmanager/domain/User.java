@@ -1,9 +1,12 @@
 package es.dormakaba.codechallenge.credentialmanager.domain;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 import java.util.UUID;
 
+import es.dormakaba.codechallenge.credentialmanager.domain.exception.CredentialAlreadyAddedException;
 import es.dormakaba.codechallenge.credentialmanager.domain.exception.ValidationException;
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.Validation;
@@ -20,6 +23,7 @@ public class User {
     private final UUID id;
     @Size(min=User.MIN, max=User.MAX, message="The size of name must be between " + User.MIN + " and " + User.MAX)
     private final String name;
+    private final List<Credential> credentials = new ArrayList<>();
     
     private User(String name) {
         this.id=UUID.randomUUID();
@@ -40,6 +44,13 @@ public class User {
             }
         }
         return user;
+    }
+
+    public void addCredential(Credential credential) throws CredentialAlreadyAddedException {
+        if (this.credentials.contains(credential)) {
+            throw new CredentialAlreadyAddedException("User with id " + this.id + " already has the credential with id " + credential.getId());
+        }
+        this.credentials.add(credential);
     }
 
     @Override

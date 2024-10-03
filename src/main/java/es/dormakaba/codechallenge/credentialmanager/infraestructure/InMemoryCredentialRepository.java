@@ -2,6 +2,7 @@ package es.dormakaba.codechallenge.credentialmanager.infraestructure;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.stereotype.Component;
 
@@ -20,6 +21,16 @@ public class InMemoryCredentialRepository implements CredentialRepository {
             throw new CredentialAlreadyExistsException("Credential with id " + credential.getId().toString() + " already exists");
         }
         credentialList.add(credential);
+    }
+
+    @Override
+    public Credential getById(UUID id) {
+        for (Credential credential : this.credentialList) {
+            if (credential.getId().equals(id)) {
+                return credential.copy();
+            }
+        }
+        return null;
     }
     
 }

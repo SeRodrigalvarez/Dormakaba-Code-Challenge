@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 import es.dormakaba.codechallenge.credentialmanager.domain.User;
 import es.dormakaba.codechallenge.credentialmanager.domain.UserRepository;
 import es.dormakaba.codechallenge.credentialmanager.domain.exception.UserAlreadyExistsException;
+import es.dormakaba.codechallenge.credentialmanager.domain.exception.UserNotExistException;
 
 @Component
 public class InMemoryUserRepository implements UserRepository{
@@ -21,6 +22,13 @@ public class InMemoryUserRepository implements UserRepository{
             throw new UserAlreadyExistsException("User with id " + user.getId().toString() + " already exists");
         }
         userList.add(user);
+    }
+
+    @Override
+    public void update(User user) throws UserNotExistException {
+        if (!userList.contains(user)) {
+            throw new UserNotExistException("User with id " + user.getId().toString() + " does not exist");
+        }
     }
 
     @Override

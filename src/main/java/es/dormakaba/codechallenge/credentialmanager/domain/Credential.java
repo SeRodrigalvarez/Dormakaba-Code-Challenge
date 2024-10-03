@@ -1,5 +1,6 @@
 package es.dormakaba.codechallenge.credentialmanager.domain;
 
+import java.util.Objects;
 import java.util.Set;
 import java.util.UUID;
 
@@ -24,6 +25,11 @@ public class Credential {
         this.code=code;
     }
 
+    private Credential(UUID id, String code) {
+        this.id=id;
+        this.code=code;
+    }
+
     public static Credential create (String code) throws ValidationException {
         Credential credential = new Credential(code);
         Set<ConstraintViolation<Credential>> violations = validator.validate(credential);
@@ -33,6 +39,23 @@ public class Credential {
             }
         }
         return credential;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Credential credential) {
+            return credential.id.equals(this.id);
+        }
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(this.id);
+    }
+
+    public Credential copy() {
+        return new Credential(this.id, this.code);
     }
 
     public UUID getId() {
