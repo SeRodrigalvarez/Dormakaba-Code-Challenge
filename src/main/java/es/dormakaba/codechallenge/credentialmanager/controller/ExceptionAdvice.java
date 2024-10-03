@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+import es.dormakaba.codechallenge.credentialmanager.domain.exception.CredentialAlreadyExistsException;
 import es.dormakaba.codechallenge.credentialmanager.domain.exception.UserAlreadyExistsException;
 import es.dormakaba.codechallenge.credentialmanager.domain.exception.ValidationException;
 
@@ -24,6 +25,12 @@ public class ExceptionAdvice {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(UserAlreadyExistsException.class)
     public String userAlreadyExistsExceptionHandler(UserAlreadyExistsException e) {
+        return e.getMessage();
+    }
+
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(CredentialAlreadyExistsException.class)
+    public String credentialAlreadyExistsExceptionHandler(CredentialAlreadyExistsException e) {
         return e.getMessage();
     }
 
