@@ -4,10 +4,8 @@ import java.util.UUID;
 
 public class CredentialCreatorResponse {
     public final UUID id;
-    public final String code;
 
-    public CredentialCreatorResponse(UUID id, String code) {
+    public CredentialCreatorResponse(UUID id) {
         this.id=id;
-        this.code=code;
     }
 }
