@@ -14,5 +14,5 @@ public interface UserRepository {
 
     public void update(User user) throws UserNotExistException;
 
-    public User getById(UUID id);
+    public User getById(UUID id) throws UserNotExistException;
 }

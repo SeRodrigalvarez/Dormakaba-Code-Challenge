@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 import es.dormakaba.codechallenge.credentialmanager.domain.Credential;
 import es.dormakaba.codechallenge.credentialmanager.domain.CredentialRepository;
 import es.dormakaba.codechallenge.credentialmanager.domain.exception.CredentialAlreadyExistsException;
+import es.dormakaba.codechallenge.credentialmanager.domain.exception.CredentialNotExistException;
 
 @Component
 public class InMemoryCredentialRepository implements CredentialRepository {
@@ -24,13 +25,13 @@ public class InMemoryCredentialRepository implements CredentialRepository {
     }
 
     @Override
-    public Credential getById(UUID id) {
+    public Credential getById(UUID id) throws CredentialNotExistException {
         for (Credential credential : this.credentialList) {
             if (credential.getId().equals(id)) {
                 return credential.copy();
             }
         }
-        return null;
+        throw new CredentialNotExistException("Credential with id " + id + " does not exist");
     }
     
 }

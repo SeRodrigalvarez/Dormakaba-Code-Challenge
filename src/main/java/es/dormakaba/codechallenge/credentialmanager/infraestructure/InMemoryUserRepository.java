@@ -32,12 +32,12 @@ public class InMemoryUserRepository implements UserRepository{
     }
 
     @Override
-    public User getById(UUID id) {
+    public User getById(UUID id) throws UserNotExistException {
         for (User user : userList) {
             if (user.getId().equals(id)) {
                 return user.copy();
             }
         }
-        return null;
+        throw new UserNotExistException("User with id " + id + " does not exist");
     }
 }

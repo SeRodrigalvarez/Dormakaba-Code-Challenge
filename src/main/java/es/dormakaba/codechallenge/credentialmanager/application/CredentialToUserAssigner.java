@@ -26,13 +26,7 @@ public class CredentialToUserAssigner {
     throws UserNotExistException, CredentialNotExistException, CredentialAlreadyAddedException 
     {
         User user = userRepository.getById(userId);
-        if (user==null) {
-            throw new UserNotExistException("User with id " + userId + " does not exist");
-        }
         Credential credential = credentialRespository.getById(credentialId);
-        if (credential==null) {
-            throw new CredentialNotExistException("Credential with id " + credentialId + " does not exist");
-        }
         user.addCredential(credential);
     }
     
