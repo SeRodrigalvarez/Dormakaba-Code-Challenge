@@ -16,7 +16,7 @@ public class CredentialCreator {
 
     public Credential create(String code) throws ValidationException, CredentialAlreadyExistsException {
         Credential credential = Credential.create(code);
-        this.credentialRepository.save(credential);
+        this.credentialRepository.create(credential);
         return credential;
     }
     

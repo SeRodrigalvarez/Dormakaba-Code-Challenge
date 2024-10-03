@@ -16,7 +16,7 @@ public class UserCreator {
     
     public User create(String name) throws ValidationException, UserAlreadyExistsException {
         User user = User.create(name);
-        this.userRepository.save(user);
+        this.userRepository.create(user);
         return user;
     }
 }

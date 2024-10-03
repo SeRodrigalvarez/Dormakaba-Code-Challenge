@@ -9,7 +9,7 @@ import es.dormakaba.codechallenge.credentialmanager.domain.exception.UserAlready
 @Repository
 public interface UserRepository {
 
-    public void save(User user) throws UserAlreadyExistsException;
+    public void create(User user) throws UserAlreadyExistsException;
 
     public User getById(UUID id);
 }

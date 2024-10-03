@@ -16,7 +16,7 @@ public class InMemoryUserRepository implements UserRepository{
     private final List<User> userList = new ArrayList<>();
 
     @Override
-    public void save(User user) throws UserAlreadyExistsException {
+    public void create(User user) throws UserAlreadyExistsException {
         if (userList.contains(user)) {
             throw new UserAlreadyExistsException("User with id " + user.getId().toString() + " already exists");
         }

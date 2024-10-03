@@ -6,5 +6,6 @@ import es.dormakaba.codechallenge.credentialmanager.domain.exception.CredentialA
 
 @Repository
 public interface CredentialRepository {
-    public void save(Credential credential) throws CredentialAlreadyExistsException;
+
+    public void create(Credential credential) throws CredentialAlreadyExistsException;
 }
