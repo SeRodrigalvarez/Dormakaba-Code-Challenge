@@ -15,9 +15,9 @@ import es.dormakaba.codechallenge.credentialmanager.domain.exception.UserNotExis
 import es.dormakaba.codechallenge.credentialmanager.domain.exception.ValidationException;
 
 @RestControllerAdvice
-public class ExceptionAdvice {
+public class CredentialManagerExceptionAdvice {
 
-    private static final Logger logger = LoggerFactory.getLogger(ExceptionAdvice.class);
+    private static final Logger logger = LoggerFactory.getLogger(CredentialManagerExceptionAdvice.class);
 
     @ExceptionHandler(CredentialAlreadyAddedException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
@@ -53,12 +53,5 @@ public class ExceptionAdvice {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public String validationExceptionHandler(ValidationException e) {
         return e.getMessage();
-    }
-
-    @ExceptionHandler(Exception.class)
-    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    public String defaultExceptionHandler(Exception e) {
-        logger.info(e.toString());
-        return "An unexpected error occurred on the server. Please try again later. If the problem persists, contact support.";
     }
 }
