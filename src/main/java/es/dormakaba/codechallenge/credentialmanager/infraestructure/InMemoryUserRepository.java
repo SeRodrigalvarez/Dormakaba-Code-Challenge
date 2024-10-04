@@ -26,9 +26,13 @@ public class InMemoryUserRepository implements UserRepository{
 
     @Override
     public void update(User user) throws UserNotExistException {
-        if (!userList.contains(user)) {
-            throw new UserNotExistException("User with id " + user.getId().toString() + " does not exist");
+        for (int i=0; i<userList.size(); i++) {
+            if (userList.get(i).equals(user)) {
+                userList.add(i, user);
+                return;
+            }
         }
+        throw new UserNotExistException("User with id " + user.getId().toString() + " does not exist");
     }
 
     @Override

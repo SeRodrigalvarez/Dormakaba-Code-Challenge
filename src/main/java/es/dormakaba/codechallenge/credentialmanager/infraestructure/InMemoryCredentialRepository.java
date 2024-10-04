@@ -25,13 +25,23 @@ public class InMemoryCredentialRepository implements CredentialRepository {
     }
 
     @Override
+    public void update(Credential credential) throws CredentialNotExistException {
+        for (int i=0; i<credentialList.size(); i++) {
+            if (credentialList.get(i).equals(credential)) {
+                credentialList.add(i, credential);
+                return;
+            }
+        }
+        throw new CredentialNotExistException("Credential with id " + credential.getId() + " does not exist");
+    }
+
+    @Override
     public Credential getById(UUID id) throws CredentialNotExistException {
-        for (Credential credential : this.credentialList) {
+        for (Credential credential : credentialList) {
             if (credential.getId().equals(id)) {
                 return credential.copy();
             }
         }
         throw new CredentialNotExistException("Credential with id " + id + " does not exist");
     }
-    
 }

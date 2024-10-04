@@ -12,5 +12,7 @@ public interface CredentialRepository {
 
     public void create(Credential credential) throws CredentialAlreadyExistsException;
 
+    public void update(Credential credential) throws CredentialNotExistException;
+
     public Credential getById(UUID id) throws CredentialNotExistException;
 }
