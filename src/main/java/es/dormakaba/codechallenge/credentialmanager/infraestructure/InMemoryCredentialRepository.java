@@ -19,7 +19,7 @@ public class InMemoryCredentialRepository implements CredentialRepository {
     @Override
     public void create(Credential credential) throws CredentialAlreadyExistsException {
         if (credentialList.contains(credential)) {
-            throw new CredentialAlreadyExistsException("Credential with id " + credential.getId().toString() + " already exists");
+            throw new CredentialAlreadyExistsException("Credential with id " + credential.getId() + " already exists");
         }
         credentialList.add(credential);
     }

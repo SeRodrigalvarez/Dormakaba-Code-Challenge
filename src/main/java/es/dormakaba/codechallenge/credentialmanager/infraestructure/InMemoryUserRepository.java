@@ -19,7 +19,7 @@ public class InMemoryUserRepository implements UserRepository{
     @Override
     public void create(User user) throws UserAlreadyExistsException {
         if (userList.contains(user)) {
-            throw new UserAlreadyExistsException("User with id " + user.getId().toString() + " already exists");
+            throw new UserAlreadyExistsException("User with id " + user.getId() + " already exists");
         }
         userList.add(user);
     }
@@ -32,7 +32,7 @@ public class InMemoryUserRepository implements UserRepository{
                 return;
             }
         }
-        throw new UserNotExistException("User with id " + user.getId().toString() + " does not exist");
+        throw new UserNotExistException("User with id " + user.getId() + " does not exist");
     }
 
     @Override
