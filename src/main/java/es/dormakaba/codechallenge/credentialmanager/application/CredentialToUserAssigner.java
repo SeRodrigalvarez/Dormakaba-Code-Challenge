@@ -27,7 +27,8 @@ public class CredentialToUserAssigner {
     {
         User user = userRepository.getById(userId);
         Credential credential = credentialRespository.getById(credentialId);
-        user.addCredential(credential);
+        user.addCredentialId(credential.getId());
+        credential.setUserId(user.getId());
     }
     
 }

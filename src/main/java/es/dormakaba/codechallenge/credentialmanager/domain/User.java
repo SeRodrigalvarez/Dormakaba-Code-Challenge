@@ -23,7 +23,7 @@ public class User {
     private final UUID id;
     @Size(min=User.MIN, max=User.MAX, message="The size of name must be between " + User.MIN + " and " + User.MAX)
     private final String name;
-    private final List<Credential> credentials = new ArrayList<>();
+    private final List<UUID> credentialIds = new ArrayList<>();
     
     private User(String name) {
         this.id=UUID.randomUUID();
@@ -46,11 +46,11 @@ public class User {
         return user;
     }
 
-    public void addCredential(Credential credential) throws CredentialAlreadyAddedException {
-        if (this.credentials.contains(credential)) {
-            throw new CredentialAlreadyAddedException("User with id " + this.id + " already has the credential with id " + credential.getId());
+    public void addCredentialId(UUID credentialId) throws CredentialAlreadyAddedException {
+        if (this.credentialIds.contains(credentialId)) {
+            throw new CredentialAlreadyAddedException("User with id " + this.id + " already has the credential with id " + credentialId);
         }
-        this.credentials.add(credential);
+        this.credentialIds.add(credentialId);
     }
 
     @Override

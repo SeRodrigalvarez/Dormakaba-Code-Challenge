@@ -20,6 +20,8 @@ public class Credential {
     @Pattern(regexp="[0-9]{"+SIZE+"}", message="Code must be an 8 digit string")
     private final String code;
 
+    private UUID userId;
+
     private Credential(String code) {
         this.id=UUID.randomUUID();
         this.code=code;
@@ -39,6 +41,10 @@ public class Credential {
             }
         }
         return credential;
+    }
+
+    public void setUserId(UUID userId) {
+        this.userId=userId;
     }
 
     @Override
@@ -64,6 +70,10 @@ public class Credential {
 
     public String getCode() {
         return this.code;
+    }
+
+    public UUID getUserId() {
+        return this.userId;
     }
 
 }
