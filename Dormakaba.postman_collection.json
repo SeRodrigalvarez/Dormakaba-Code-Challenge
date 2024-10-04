@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "d7322f3f-c083-45b4-9a30-87c777e8d877",
+		"_postman_id": "2f5e94bd-7ce0-4bb7-ad99-bb7538174fec",
 		"name": "Dormakaba",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "38780181"
@@ -115,6 +115,39 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Create Door",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const responseJson = pm.response.json();",
+							"",
+							"const doorId = responseJson.id;",
+							"",
+							"pm.collectionVariables.set(\"DOOR_ID\", doorId);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/door",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"door"
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"event": [
@@ -150,6 +183,11 @@
 		{
 			"key": "CREDENTIAL_ID",
 			"value": ""
+		},
+		{
+			"key": "DOOR_ID",
+			"value": "",
+			"type": "string"
 		}
 	]
 }
