@@ -53,6 +53,10 @@ public class User {
         this.credentialIds.add(credentialId);
     }
 
+    public List<UUID> getCredentialIds() {
+        return List.copyOf(this.credentialIds);
+    }
+
     @Override
     public boolean equals(Object obj) {
         if (obj instanceof User user) {
@@ -66,7 +70,7 @@ public class User {
         return Objects.hash(this.id);
     }
 
-    public User copy()  {
+    public User copy() {
         return new User(this.id, this.name);
     }
 

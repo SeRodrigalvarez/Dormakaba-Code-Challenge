@@ -14,7 +14,7 @@ import es.dormakaba.codechallenge.iotsimulator.domain.exception.DoorNotExistExce
 @Component
 public class InMemoryDoorRepository implements DoorRespository {
 
-    List<Door> doorList = new ArrayList<>();
+    private final List<Door> doorList = new ArrayList<>();
 
     @Override
     public void create(Door door) throws DoorAlreadyExistsException {

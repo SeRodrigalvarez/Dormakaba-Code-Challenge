@@ -22,6 +22,8 @@ public class Credential {
 
     private UUID userId;
 
+    private UUID doorId;
+
     private Credential(String code) {
         this.id=UUID.randomUUID();
         this.code=code;
@@ -45,6 +47,10 @@ public class Credential {
 
     public void setUserId(UUID userId) {
         this.userId=userId;
+    }
+
+    public void setDoorId(UUID doorId) {
+        this.doorId=doorId;
     }
 
     @Override
@@ -74,6 +80,10 @@ public class Credential {
 
     public UUID getUserId() {
         return this.userId;
+    }
+
+    public UUID getDoorId() {
+        return this.doorId;
     }
 
 }

@@ -2,9 +2,8 @@ package es.dormakaba.codechallenge.iotsimulator.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.UUID;
-
-import es.dormakaba.codechallenge.iotsimulator.domain.exception.CredentialAlreadyAddedToDoorException;
 
 public class Door {
     
@@ -13,7 +12,7 @@ public class Door {
     // Out of the scope of this challenge, but it should have, at least, an address property
     //private final String address;
 
-    private List<UUID> credentialIds = new ArrayList<>();
+    private final List<UUID> credentialIds = new ArrayList<>();
 
     private Door() {
         this.id=UUID.randomUUID();
@@ -27,11 +26,29 @@ public class Door {
         return new Door();
     }
 
-    public void addCredentialId(UUID credentialId) throws CredentialAlreadyAddedToDoorException {
-        if (this.credentialIds.contains(credentialId)) {
-            throw new CredentialAlreadyAddedToDoorException("Door with id " + this.id + " already has the credential with id " + credentialId);
+    public void addCredentialIds(List<UUID> credentialIds) {
+        for (UUID idToAdd : credentialIds) {
+            if (!this.credentialIds.contains(idToAdd)) {
+                this.credentialIds.add(idToAdd);
+            }
         }
-        this.credentialIds.add(credentialId);
+    }
+
+    public List<UUID> getCredentialIds() {
+        return List.copyOf(this.credentialIds);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Door door) {
+            return door.id.equals(this.id);
+        }
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(this.id);
     }
 
     public Door copy() {
