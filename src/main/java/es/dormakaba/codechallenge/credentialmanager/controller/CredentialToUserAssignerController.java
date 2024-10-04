@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import es.dormakaba.codechallenge.credentialmanager.application.CredentialToUserAssigner;
 import es.dormakaba.codechallenge.credentialmanager.controller.request.CredentialToUserAssginerRequest;
-import es.dormakaba.codechallenge.credentialmanager.domain.exception.CredentialAlreadyAddedException;
+import es.dormakaba.codechallenge.credentialmanager.domain.exception.CredentialAlreadyAddedToUserException;
 import es.dormakaba.codechallenge.credentialmanager.domain.exception.CredentialNotExistException;
 import es.dormakaba.codechallenge.credentialmanager.domain.exception.UserNotExistException;
 
@@ -26,7 +26,7 @@ public class CredentialToUserAssignerController {
         @PathVariable UUID userId,
         @RequestBody CredentialToUserAssginerRequest request
     ) 
-    throws UserNotExistException, CredentialNotExistException, CredentialAlreadyAddedException 
+    throws UserNotExistException, CredentialNotExistException, CredentialAlreadyAddedToUserException 
     {
         this.credentialToUserAssigner.assignCredentialToUser(userId, request.credentialId);
         return "OK";

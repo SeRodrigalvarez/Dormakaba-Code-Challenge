@@ -9,7 +9,7 @@ import es.dormakaba.codechallenge.credentialmanager.domain.Credential;
 import es.dormakaba.codechallenge.credentialmanager.domain.CredentialRepository;
 import es.dormakaba.codechallenge.credentialmanager.domain.User;
 import es.dormakaba.codechallenge.credentialmanager.domain.UserRepository;
-import es.dormakaba.codechallenge.credentialmanager.domain.exception.CredentialAlreadyAddedException;
+import es.dormakaba.codechallenge.credentialmanager.domain.exception.CredentialAlreadyAddedToUserException;
 import es.dormakaba.codechallenge.credentialmanager.domain.exception.CredentialNotExistException;
 import es.dormakaba.codechallenge.credentialmanager.domain.exception.UserNotExistException;
 
@@ -23,7 +23,7 @@ public class CredentialToUserAssigner {
     private CredentialRepository credentialRespository;
 
     public void assignCredentialToUser (UUID userId, UUID credentialId) 
-    throws UserNotExistException, CredentialNotExistException, CredentialAlreadyAddedException 
+    throws UserNotExistException, CredentialNotExistException, CredentialAlreadyAddedToUserException 
     {
         User user = userRepository.getById(userId);
         Credential credential = credentialRespository.getById(credentialId);

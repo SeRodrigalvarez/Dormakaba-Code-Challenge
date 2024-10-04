@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-import es.dormakaba.codechallenge.credentialmanager.domain.exception.CredentialAlreadyAddedException;
+import es.dormakaba.codechallenge.credentialmanager.domain.exception.CredentialAlreadyAddedToUserException;
 import es.dormakaba.codechallenge.credentialmanager.domain.exception.CredentialAlreadyExistsException;
 import es.dormakaba.codechallenge.credentialmanager.domain.exception.CredentialNotExistException;
 import es.dormakaba.codechallenge.credentialmanager.domain.exception.UserAlreadyExistsException;
@@ -19,9 +19,9 @@ public class CredentialManagerExceptionAdvice {
 
     private static final Logger logger = LoggerFactory.getLogger(CredentialManagerExceptionAdvice.class);
 
-    @ExceptionHandler(CredentialAlreadyAddedException.class)
+    @ExceptionHandler(CredentialAlreadyAddedToUserException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public String credentialAlreadyAddedException(CredentialAlreadyAddedException e) {
+    public String credentialAlreadyAddedException(CredentialAlreadyAddedToUserException e) {
         return e.getMessage();
     }
 

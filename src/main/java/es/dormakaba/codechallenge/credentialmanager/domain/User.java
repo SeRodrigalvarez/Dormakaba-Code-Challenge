@@ -6,7 +6,7 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.UUID;
 
-import es.dormakaba.codechallenge.credentialmanager.domain.exception.CredentialAlreadyAddedException;
+import es.dormakaba.codechallenge.credentialmanager.domain.exception.CredentialAlreadyAddedToUserException;
 import es.dormakaba.codechallenge.credentialmanager.domain.exception.ValidationException;
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.Validation;
@@ -46,9 +46,9 @@ public class User {
         return user;
     }
 
-    public void addCredentialId(UUID credentialId) throws CredentialAlreadyAddedException {
+    public void addCredentialId(UUID credentialId) throws CredentialAlreadyAddedToUserException {
         if (this.credentialIds.contains(credentialId)) {
-            throw new CredentialAlreadyAddedException("User with id " + this.id + " already has the credential with id " + credentialId);
+            throw new CredentialAlreadyAddedToUserException("User with id " + this.id + " already has the credential with id " + credentialId);
         }
         this.credentialIds.add(credentialId);
     }
