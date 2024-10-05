@@ -44,4 +44,15 @@ public class InMemoryCredentialRepository implements CredentialRepository {
         }
         throw new CredentialNotExistException("Credential with id " + id + " does not exist");
     }
+
+    @Override
+    public List<UUID> getCredentialIdsByCodeAndDoorId(String code, UUID doorId) {
+        List<UUID> matchingCredentialIds = new ArrayList<>();
+        for (Credential credential : this.credentialList) {
+            if (credential.getCode().equals(code) && credential.getDoorIds().contains(doorId)) {
+                matchingCredentialIds.add(credential.getId());
+            }
+        }
+        return matchingCredentialIds;
+    }
 }
