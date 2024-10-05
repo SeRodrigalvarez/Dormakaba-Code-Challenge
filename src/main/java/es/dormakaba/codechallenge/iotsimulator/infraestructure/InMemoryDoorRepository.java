@@ -28,7 +28,7 @@ public class InMemoryDoorRepository implements DoorRespository {
     public void update(Door door) throws DoorNotExistException {
         for (int i=0; i<doorList.size(); i++) {
             if (doorList.get(i).equals(door)) {
-                doorList.add(i, door);
+                doorList.set(i, door);
                 return;
             }
         }

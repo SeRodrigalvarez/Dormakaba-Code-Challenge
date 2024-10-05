@@ -28,7 +28,7 @@ public class InMemoryCredentialRepository implements CredentialRepository {
     public void update(Credential credential) throws CredentialNotExistException {
         for (int i=0; i<credentialList.size(); i++) {
             if (credentialList.get(i).equals(credential)) {
-                credentialList.add(i, credential);
+                credentialList.set(i, credential);
                 return;
             }
         }

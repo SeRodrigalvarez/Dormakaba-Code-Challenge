@@ -28,7 +28,7 @@ public class InMemoryUserRepository implements UserRepository{
     public void update(User user) throws UserNotExistException {
         for (int i=0; i<userList.size(); i++) {
             if (userList.get(i).equals(user)) {
-                userList.add(i, user);
+                userList.set(i, user);
                 return;
             }
         }
