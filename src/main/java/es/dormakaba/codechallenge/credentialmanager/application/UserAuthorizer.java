@@ -20,13 +20,13 @@ import es.dormakaba.codechallenge.iotsimulator.domain.exception.DoorNotExistExce
 public class UserAuthorizer {
 
     @Autowired
-    DoorCredentialsAdder doorCredentialsAdder;
+    private DoorCredentialsAdder doorCredentialsAdder;
 
     @Autowired
-    UserRepository userRepository;
+    private UserRepository userRepository;
 
     @Autowired
-    CredentialRepository credentialRepository;
+    private CredentialRepository credentialRepository;
 
     private static final Logger logger = LoggerFactory.getLogger(UserAuthorizer.class);
 

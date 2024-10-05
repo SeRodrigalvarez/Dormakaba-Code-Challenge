@@ -14,7 +14,7 @@ import es.dormakaba.codechallenge.iotsimulator.domain.exception.DoorNotExistExce
 public class DoorCredentialsAdder {
 
     @Autowired
-    DoorRespository doorRepository;
+    private DoorRespository doorRepository;
     
     public void doorCredentialsAdder(UUID doorId, List<UUID> credentialIds) throws DoorNotExistException {
         Door door = this.doorRepository.getById(doorId);

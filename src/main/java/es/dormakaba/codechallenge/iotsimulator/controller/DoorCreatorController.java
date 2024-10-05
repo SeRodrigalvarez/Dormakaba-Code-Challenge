@@ -14,7 +14,7 @@ import es.dormakaba.codechallenge.iotsimulator.domain.exception.DoorAlreadyExist
 public class DoorCreatorController {
 
     @Autowired
-    DoorCreator doorCreator;
+    private DoorCreator doorCreator;
     
     @PostMapping("/door")
     public @ResponseBody DoorCreatorResponse create() throws DoorAlreadyExistsException {
