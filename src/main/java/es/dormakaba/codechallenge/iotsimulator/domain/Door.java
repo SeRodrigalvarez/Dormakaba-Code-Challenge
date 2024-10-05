@@ -9,25 +9,27 @@ public class Door {
     
     private final UUID id;
 
-    // Out of the scope of this challenge, but it should have, at least, an address property
+    // NOTE: Out of the scope of this challenge, but it should have, at least, an address property
     //private final String address;
 
-    private final List<UUID> credentialIds = new ArrayList<>();
+    private final List<UUID> credentialIds;
 
     private Door() {
         this.id=UUID.randomUUID();
+        this.credentialIds=new ArrayList<>();
     }
 
-    private Door(UUID id) {
+    private Door(UUID id, List<UUID> credentialIds) {
         this.id=id;
+        this.credentialIds=credentialIds;
     }
 
     public static Door create() {
         return new Door();
     }
 
-    public void addCredentialIds(List<UUID> credentialIds) {
-        for (UUID idToAdd : credentialIds) {
+    public void addCredentialIds(List<UUID> credentialIdsToAdd) {
+        for (UUID idToAdd : credentialIdsToAdd) {
             if (!this.credentialIds.contains(idToAdd)) {
                 this.credentialIds.add(idToAdd);
             }
@@ -52,7 +54,7 @@ public class Door {
     }
 
     public Door copy() {
-        return new Door(this.id);
+        return new Door(this.id, new ArrayList<>(this.credentialIds));
     }
 
     public UUID getId() {

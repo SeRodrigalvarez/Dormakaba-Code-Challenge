@@ -23,16 +23,18 @@ public class User {
     private final UUID id;
     @Size(min=User.MIN, max=User.MAX, message="The size of name must be between " + User.MIN + " and " + User.MAX)
     private final String name;
-    private final List<UUID> credentialIds = new ArrayList<>();
+    private final List<UUID> credentialIds;
     
     private User(String name) {
         this.id=UUID.randomUUID();
         this.name=name;
+        this.credentialIds=new ArrayList<>();
     }
 
-    private User(UUID id, String name) {
+    private User(UUID id, String name, List<UUID> credentialIds) {
         this.id=id;
         this.name=name;
+        this.credentialIds=credentialIds;
     }
     
     public static User create (String name) throws ValidationException {
@@ -71,7 +73,7 @@ public class User {
     }
 
     public User copy() {
-        return new User(this.id, this.name);
+        return new User(this.id, this.name, new ArrayList<>(this.credentialIds));
     }
 
     public UUID getId() {

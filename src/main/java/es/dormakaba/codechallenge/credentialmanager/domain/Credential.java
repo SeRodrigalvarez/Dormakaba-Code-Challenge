@@ -32,9 +32,11 @@ public class Credential {
         this.doorIds=new ArrayList<>();
     }
 
-    private Credential(UUID id, String code) {
+    private Credential(UUID id, String code, UUID userId, List<UUID> doorIds) {
         this.id=id;
         this.code=code;
+        this.userId=userId;
+        this.doorIds=doorIds;
     }
 
     public static Credential create (String code) throws ValidationException {
@@ -76,7 +78,7 @@ public class Credential {
     }
 
     public Credential copy() {
-        return new Credential(this.id, this.code);
+        return new Credential(this.id, this.code, this.userId, new ArrayList<>(this.doorIds));
     }
 
     public UUID getId() {
