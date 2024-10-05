@@ -7,6 +7,7 @@ import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.servlet.resource.NoResourceFoundException;
 
 @RestControllerAdvice
 public class DefaultExceptionAdvice {
@@ -16,7 +17,7 @@ public class DefaultExceptionAdvice {
     @ExceptionHandler(Exception.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public String defaultExceptionHandler(Exception e) {
-        logger.info(e.toString());
+        logger.error("Default Exception Handler catched: ", e);
         return "An unexpected error occurred on the server. Please try again later. If the problem persists, contact support.";
     }
 
@@ -24,6 +25,17 @@ public class DefaultExceptionAdvice {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public String httpMessageNotReadableException(HttpMessageNotReadableException e) {
         String errorMessage = e.getMessage();
-        return errorMessage.substring(0, errorMessage.indexOf(':'));
+        int endIndex = errorMessage.length();
+        int indexOfColon = errorMessage.indexOf(':');
+        if (indexOfColon != -1) {
+            endIndex = indexOfColon;
+        }
+        return errorMessage.substring(0, endIndex);
+    }
+
+    @ExceptionHandler(NoResourceFoundException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public String httpMessageNotReadableException(NoResourceFoundException e) {
+        return  e.getMessage();
     }
 }
