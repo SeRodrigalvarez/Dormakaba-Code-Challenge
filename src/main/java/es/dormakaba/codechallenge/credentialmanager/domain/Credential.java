@@ -1,5 +1,7 @@
 package es.dormakaba.codechallenge.credentialmanager.domain;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 import java.util.UUID;
@@ -22,11 +24,12 @@ public class Credential {
 
     private UUID userId;
 
-    private UUID doorId;
+    private final List<UUID> doorIds;
 
     private Credential(String code) {
         this.id=UUID.randomUUID();
         this.code=code;
+        this.doorIds=new ArrayList<>();
     }
 
     private Credential(UUID id, String code) {
@@ -49,8 +52,14 @@ public class Credential {
         this.userId=userId;
     }
 
-    public void setDoorId(UUID doorId) {
-        this.doorId=doorId;
+    public void addDoorId(UUID doorId) {
+        if (!this.doorIds.contains(doorId)) {
+            this.doorIds.add(doorId);
+        }
+    }
+
+    public List<UUID> getDoorIds() {
+        return List.copyOf(this.doorIds);
     }
 
     @Override
@@ -81,9 +90,4 @@ public class Credential {
     public UUID getUserId() {
         return this.userId;
     }
-
-    public UUID getDoorId() {
-        return this.doorId;
-    }
-
 }

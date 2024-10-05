@@ -34,10 +34,11 @@ public class UserAuthorizer {
         User user = this.userRepository.getById(userId);
         this.doorCredentialsAdder.doorCredentialsAdder(doorId, user.getCredentialIds());
         Credential credential;
+        // NOTE: We could use a repository method to bulk update credentials
         for (UUID credentialId : user.getCredentialIds()) {
             try {
                 credential = this.credentialRepository.getById(credentialId);
-                credential.setDoorId(doorId);
+                credential.addDoorId(doorId);
                 this.credentialRepository.update(credential);
             } catch (CredentialNotExistException e) {
                 logger.error("Unexpected CredentialNotExistException at UserAuthorizer use case");
