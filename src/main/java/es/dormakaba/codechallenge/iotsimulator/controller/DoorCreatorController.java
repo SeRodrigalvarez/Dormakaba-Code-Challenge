@@ -1,8 +1,10 @@
 package es.dormakaba.codechallenge.iotsimulator.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import es.dormakaba.codechallenge.iotsimulator.application.DoorCreator;
@@ -17,6 +19,7 @@ public class DoorCreatorController {
     private DoorCreator doorCreator;
     
     @PostMapping("/door")
+    @ResponseStatus(HttpStatus.CREATED)
     public @ResponseBody DoorCreatorResponse create() throws DoorAlreadyExistsException {
         Door door = this.doorCreator.create();
         return new DoorCreatorResponse(door.getId());
