@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import es.dormakaba.codechallenge.credentialmanager.application.CredentialReader;
-import es.dormakaba.codechallenge.iotsimulator.domain.DoorRespository;
+import es.dormakaba.codechallenge.iotsimulator.domain.DoorRepository;
 import es.dormakaba.codechallenge.iotsimulator.domain.exception.DoorNotExistException;
 
 @Service
@@ -17,11 +17,11 @@ public class DoorAccessRequester {
     private CredentialReader credentialReader;
 
     @Autowired
-    private DoorRespository doorRespository;
+    private DoorRepository doorRepository;
     
     public boolean requestAccess(UUID doorId, String code) throws DoorNotExistException {
 
-        this.doorRespository.getById(doorId);
+        this.doorRepository.getById(doorId);
         
         List<UUID> matchingCredentialIds = credentialReader.getCredentialIdsByCodeAndDoorId(code, doorId);
 

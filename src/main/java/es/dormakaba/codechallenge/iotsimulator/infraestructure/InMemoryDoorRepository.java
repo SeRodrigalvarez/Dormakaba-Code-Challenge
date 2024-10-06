@@ -7,12 +7,12 @@ import java.util.UUID;
 import org.springframework.stereotype.Component;
 
 import es.dormakaba.codechallenge.iotsimulator.domain.Door;
-import es.dormakaba.codechallenge.iotsimulator.domain.DoorRespository;
+import es.dormakaba.codechallenge.iotsimulator.domain.DoorRepository;
 import es.dormakaba.codechallenge.iotsimulator.domain.exception.DoorAlreadyExistsException;
 import es.dormakaba.codechallenge.iotsimulator.domain.exception.DoorNotExistException;
 
 @Component
-public class InMemoryDoorRepository implements DoorRespository {
+public class InMemoryDoorRepository implements DoorRepository {
 
     private final List<Door> doorList = new ArrayList<>();
 

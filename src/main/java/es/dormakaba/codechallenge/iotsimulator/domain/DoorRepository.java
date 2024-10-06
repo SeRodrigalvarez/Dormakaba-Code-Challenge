@@ -8,7 +8,7 @@ import es.dormakaba.codechallenge.iotsimulator.domain.exception.DoorAlreadyExist
 import es.dormakaba.codechallenge.iotsimulator.domain.exception.DoorNotExistException;
 
 @Repository
-public interface DoorRespository {
+public interface DoorRepository {
     
     public void create(Door door) throws DoorAlreadyExistsException;
 
