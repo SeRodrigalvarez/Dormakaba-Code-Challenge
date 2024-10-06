@@ -36,6 +36,12 @@ public class Door {
         }
     }
 
+    public void removeCredentialIds(List<UUID> crendentialIdsToRemove) {
+        for (UUID idToRemove : crendentialIdsToRemove) {
+            this.credentialIds.remove(idToRemove);
+        }
+    }
+
     public List<UUID> getCredentialIds() {
         return List.copyOf(this.credentialIds);
     }

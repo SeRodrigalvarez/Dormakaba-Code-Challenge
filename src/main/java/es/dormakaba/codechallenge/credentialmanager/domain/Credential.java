@@ -60,6 +60,10 @@ public class Credential {
         }
     }
 
+    public void removeDoorId(UUID doorId) {
+        this.doorIds.remove(doorId);
+    }
+
     public List<UUID> getDoorIds() {
         return List.copyOf(this.doorIds);
     }
