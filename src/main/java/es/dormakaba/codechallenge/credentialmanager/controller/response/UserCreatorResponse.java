@@ -3,8 +3,10 @@ package es.dormakaba.codechallenge.credentialmanager.controller.response;
 import java.util.UUID;
 
 public class UserCreatorResponse {
-    public final UUID id;
-    public final String name;
+    public UUID id;
+    public String name;
+
+    public UserCreatorResponse() {}
 
     public UserCreatorResponse(UUID id, String name) {
         this.id=id;
