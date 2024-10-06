@@ -13,13 +13,13 @@ public class IOTSimulatorExceptionAdvice {
 
     @ExceptionHandler(DoorAlreadyExistsException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public String credentialAlreadyAddedException(DoorAlreadyExistsException e) {
+    public String credentialAlreadyAddedExceptionHandler(DoorAlreadyExistsException e) {
         return e.getMessage();
     }
 
     @ExceptionHandler(DoorNotExistException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public String credentialAlreadyAddedException(DoorNotExistException e) {
+    public String credentialAlreadyAddedExceptionHandler(DoorNotExistException e) {
         return e.getMessage();
     }
 }

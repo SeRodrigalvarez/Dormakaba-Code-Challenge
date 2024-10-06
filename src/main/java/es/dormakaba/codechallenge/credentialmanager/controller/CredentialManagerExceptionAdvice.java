@@ -17,7 +17,7 @@ public class CredentialManagerExceptionAdvice {
 
     @ExceptionHandler(CredentialAlreadyAddedToUserException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public String credentialAlreadyAddedException(CredentialAlreadyAddedToUserException e) {
+    public String credentialAlreadyAddedExceptionHandler(CredentialAlreadyAddedToUserException e) {
         return e.getMessage();
     }
 
@@ -29,7 +29,7 @@ public class CredentialManagerExceptionAdvice {
 
     @ExceptionHandler(CredentialNotExistException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public String credentialNotExistException(CredentialNotExistException e) {
+    public String credentialNotExistExceptionHandler(CredentialNotExistException e) {
         return e.getMessage();
     }
 

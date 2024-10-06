@@ -16,14 +16,14 @@ public class DefaultExceptionAdvice {
 
     @ExceptionHandler(Exception.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    public String defaultExceptionHandler(Exception e) {
+    public String defaultExceptionHandlerHandler(Exception e) {
         logger.error("Default Exception Handler catched: ", e);
         return "An unexpected error occurred on the server. Please try again later. If the problem persists, contact support.";
     }
 
     @ExceptionHandler(HttpMessageNotReadableException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public String httpMessageNotReadableException(HttpMessageNotReadableException e) {
+    public String httpMessageNotReadableExceptionHandler(HttpMessageNotReadableException e) {
         String errorMessage = e.getMessage();
         int endIndex = errorMessage.length();
         int indexOfColon = errorMessage.indexOf(':');
@@ -35,7 +35,7 @@ public class DefaultExceptionAdvice {
 
     @ExceptionHandler(NoResourceFoundException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public String httpMessageNotReadableException(NoResourceFoundException e) {
+    public String httpMessageNotReadableExceptionHandler(NoResourceFoundException e) {
         return  e.getMessage();
     }
 }
