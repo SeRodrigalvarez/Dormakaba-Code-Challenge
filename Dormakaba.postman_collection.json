@@ -60,7 +60,24 @@
 							"",
 							"pm.collectionVariables.set(\"CREDENTIAL_ID\", credentialId);"
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"if (!pm.request.body.isEmpty()) {",
+							"    const requestJson = JSON.parse(pm.request.body.raw);",
+							"",
+							"    const code = requestJson.code;",
+							"",
+							"    pm.collectionVariables.set(\"CODE\", code);",
+							"}"
+						],
+						"type": "text/javascript",
+						"packages": {}
 					}
 				}
 			],
@@ -176,6 +193,54 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Revoke User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"doorId\": \"{{DOOR_ID}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/user/{{USER_ID}}/revoke",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"user",
+						"{{USER_ID}}",
+						"revoke"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Request Access",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/door/{{DOOR_ID}}/requestAccess/{{CODE}}",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"door",
+						"{{DOOR_ID}}",
+						"requestAccess",
+						"{{CODE}}"
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"event": [
@@ -214,6 +279,11 @@
 		},
 		{
 			"key": "DOOR_ID",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "CODE",
 			"value": "",
 			"type": "string"
 		}
