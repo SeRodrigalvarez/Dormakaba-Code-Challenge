@@ -28,3 +28,4 @@ bin/
 build/
 .gradle/
 .vscode
+!gradle-wrapper.jar
