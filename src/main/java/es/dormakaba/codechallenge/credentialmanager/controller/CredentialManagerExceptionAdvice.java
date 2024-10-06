@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import es.dormakaba.codechallenge.credentialmanager.domain.exception.CredentialAlreadyAddedToUserException;
 import es.dormakaba.codechallenge.credentialmanager.domain.exception.CredentialAlreadyExistsException;
 import es.dormakaba.codechallenge.credentialmanager.domain.exception.CredentialNotExistException;
+import es.dormakaba.codechallenge.credentialmanager.domain.exception.UserAlreadyAddedToCredentialException;
 import es.dormakaba.codechallenge.credentialmanager.domain.exception.UserAlreadyExistsException;
 import es.dormakaba.codechallenge.credentialmanager.domain.exception.UserNotExistException;
 import es.dormakaba.codechallenge.credentialmanager.domain.exception.ValidationException;
@@ -30,6 +31,12 @@ public class CredentialManagerExceptionAdvice {
     @ExceptionHandler(CredentialNotExistException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public String credentialNotExistExceptionHandler(CredentialNotExistException e) {
+        return e.getMessage();
+    }
+
+    @ExceptionHandler(UserAlreadyAddedToCredentialException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public String userAlreadyAddedToCredentialExceptionHandler(UserAlreadyAddedToCredentialException e) {
         return e.getMessage();
     }
 

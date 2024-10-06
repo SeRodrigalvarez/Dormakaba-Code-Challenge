@@ -11,6 +11,7 @@ import es.dormakaba.codechallenge.credentialmanager.domain.User;
 import es.dormakaba.codechallenge.credentialmanager.domain.UserRepository;
 import es.dormakaba.codechallenge.credentialmanager.domain.exception.CredentialAlreadyAddedToUserException;
 import es.dormakaba.codechallenge.credentialmanager.domain.exception.CredentialNotExistException;
+import es.dormakaba.codechallenge.credentialmanager.domain.exception.UserAlreadyAddedToCredentialException;
 import es.dormakaba.codechallenge.credentialmanager.domain.exception.UserNotExistException;
 
 @Service
@@ -23,7 +24,7 @@ public class CredentialToUserAssigner {
     private CredentialRepository credentialRespository;
 
     public void assignCredentialToUser (UUID userId, UUID credentialId) 
-    throws UserNotExistException, CredentialNotExistException, CredentialAlreadyAddedToUserException 
+    throws UserNotExistException, CredentialNotExistException, CredentialAlreadyAddedToUserException, UserAlreadyAddedToCredentialException 
     {
         User user = userRepository.getById(userId);
         Credential credential = credentialRespository.getById(credentialId);

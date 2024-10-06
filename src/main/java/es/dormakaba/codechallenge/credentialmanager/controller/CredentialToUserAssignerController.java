@@ -12,6 +12,7 @@ import es.dormakaba.codechallenge.credentialmanager.application.CredentialToUser
 import es.dormakaba.codechallenge.credentialmanager.controller.request.CredentialToUserAssginerRequest;
 import es.dormakaba.codechallenge.credentialmanager.domain.exception.CredentialAlreadyAddedToUserException;
 import es.dormakaba.codechallenge.credentialmanager.domain.exception.CredentialNotExistException;
+import es.dormakaba.codechallenge.credentialmanager.domain.exception.UserAlreadyAddedToCredentialException;
 import es.dormakaba.codechallenge.credentialmanager.domain.exception.UserNotExistException;
 
 @RestController
@@ -26,7 +27,7 @@ public class CredentialToUserAssignerController {
         @PathVariable UUID userId,
         @RequestBody CredentialToUserAssginerRequest request
     ) 
-    throws UserNotExistException, CredentialNotExistException, CredentialAlreadyAddedToUserException 
+    throws UserNotExistException, CredentialNotExistException, CredentialAlreadyAddedToUserException, UserAlreadyAddedToCredentialException 
     {
         this.credentialToUserAssigner.assignCredentialToUser(userId, request.credentialId);
         return "OK";
