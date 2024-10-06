@@ -2,7 +2,7 @@
 
 ## Description
 
-This project is my Dormakaba Conding Challenge. The app uses Java 21, Spring Boot 3.3 and Gradle. SOLID principles, Hexagonal Architecture and DDD has been applied. Conventional/Standarized commit messages have been used.
+This project is my Dormakaba Conding Challenge. The app uses Java 21, Spring Boot 3.3 and Gradle. SOLID principles, Hexagonal Architecture and DDD have been applied. Conventional/Standarized commit messages have been used.
 
 ## Running the app
 
