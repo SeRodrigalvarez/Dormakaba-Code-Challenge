@@ -11,7 +11,7 @@ The only requirement for running the app is Java 21.
 To start the app:
 
 ```bash
-$ ./gradle bootRun
+$ ./gradlew bootRun
 ```
 
 `Dormakaba.postman_collection.json` contains all the REST requests with pre-request and post-response scripts to populate collection variables (USER_ID, CREDENTIAL_ID, DOOR_ID and CODE).
